@@ -75,3 +75,68 @@ export const registerUserMailTemplate = `
   </body>
 </html>
 `;
+
+export const applicationMailTemplate = `
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Registration Confirmation</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        background-color: #ffffff;
+        margin: 30px auto;
+        padding: 30px;
+        max-width: 600px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      h2 {
+        color: #333333;
+      }
+      p {
+        color: #555555;
+        line-height: 1.6;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+      }
+      .footer {
+        margin-top: 40px;
+        font-size: 12px;
+        color: #999999;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Welcome to JOMAT!</h2>
+      <p>Hello {{username}},</p>
+      <p>Thank you for applying to work as a tutor on our Private Tutoring Platform. Your application has been recieved.</p>
+      <p>We're excited to have you on board! You can now proceed to the screening and interview stage.</p>
+
+      <a class="btn" href="{{loginLink}}">Go to Dashboard</a>
+
+      <p>If you did not apply for this job, please ignore this email or contact our support.</p>
+
+      <div class="footer">
+        &copy; 2025 JOMAT. All rights reserved.
+      </div>
+    </div>
+  </body>
+</html>
+`;
