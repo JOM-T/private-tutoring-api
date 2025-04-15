@@ -5,25 +5,29 @@ import 'dotenv/config'
 
 
 export const addApplication = async (req, res, next) => {
-    const { error, value } = applicationFormValidator.validate (req.body);
-    if (error) {
-        return res.status(422).json(error);
+    try {
+        const { error, value } = applicationFormValidator.validate (req.body);
+        if (error) {
+            return res.status(422).json(error);
+        }
+        const applied = await applicationModel.findOne({
+            $or: [
+                { email: value.email },
+                { contact: value.contact }
+            ]
+        });
+        if (applied) {
+            return res.status(409).json('You have already submitted an application!')
+        }
+        const result = await applicationModel.create(value);
+        await mailTransport.sendMail({
+            from: process.env.USER_EMAIL,
+            to: value.email,
+            subject: "Your JOMAT application has been recieved!",
+            html: applicationMailTemplate.replace ("{{name}}", value.name)
+        });
+        res.status(201).json('Application successfully submitted!');
+    } catch (error) {
+        next(error);
     }
-    const applied = await applicationModel.findOne({
-        $or: [
-            { email: value.email },
-            { contact: value.contact }
-        ]
-    });
-    if (applied) {
-        return res.status(409).json('You have already submitted an application!')
-    }
-    const result = await applicationModel.create(value);
-    await mailTransport.sendMail({
-        from: process.env.USER_EMAIL,
-        to: value.email,
-        subject: "Your JOMAT application has been recieved!",
-        html: applicationMailTemplate.replace ("{{username}}", value.username)
-    });
-    res.status(201).json('Application successfully submitted!');
 }
