@@ -1,13 +1,16 @@
 import Joi from "joi";
 
 export const applicationFormValidator = Joi.object ({
-    name: Joi.string().required(),
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
     email: Joi.string().required(),
-    contact: Joi.number().required(),
-    region: Joi.string().required(),
+    phoneNumber: Joi.number().required(),
     location: Joi.string().required(),
-    qualification: Joi.string().required(),
-    yearsOfExperience: Joi.string().required(),
-    subject: Joi.string().required(),
-    numberOfHoursAvailablePerWeek: Joi.string().required()
+    specialization: Joi.string().required(),
+    earliestPossibleStartDate: Joi.string().required(),
+    preferredInterviewDate: Joi.string().required(),
+    preferredInterviewTime: Joi.string().required(),
+    coverLetter: Joi.string().required(),
+    uploadCv: Joi.string().required(),
+    otherDocument: Joi.string().optional()
 });

@@ -12,12 +12,9 @@ export const registerUser = async (req, res, next) => {
         if (error) {
             return res.status(422).json(error)
         }
-        const user = await userModel.findOne({
-            $or: [
-                { username: value.username },
+        const user = await userModel.findOne(
                 { email: value.email }
-            ]
-        });
+        );
         if (user) {
             return res.status(409).json('User already exist!');
         }
@@ -30,7 +27,7 @@ export const registerUser = async (req, res, next) => {
             from: process.env.USER_EMAIL,
             to: value.email,
             subject: "Notification of successful registration",
-            html: registerUserMailTemplate.replace( "{{username}}", value.username )
+            html: registerUserMailTemplate.replace( "{{firstName}}", value.firstName )
         });
         res.status(201).json('User registered successfully!');
     } catch (error) {
@@ -44,12 +41,9 @@ export const loginUser = async (req, res, next) => {
         if (error) {
             return res.status(422).json(error);
         }
-        const user = await userModel.findOne({
-            $or: [
-                { username: value.username },
+        const user = await userModel.findOne(
                 { email: value.email }
-            ]
-        });
+        );
         if (!user) {
             return res.status(404).json('User does not exist!')
         }
@@ -60,7 +54,7 @@ export const loginUser = async (req, res, next) => {
         const accessToken = jwt.sign(
             { id: user.id },
             process.env.JWT_SECRET,
-            { expiresIn: "24h" }
+            { expiresIn: "1h" }
         );
         res.status(200).json({
             accessToken,

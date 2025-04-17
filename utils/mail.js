@@ -60,7 +60,7 @@ export const registerUserMailTemplate = `
   <body>
     <div class="container">
       <h2>Welcome to JOMAT!</h2>
-      <p>Hello {{username}},</p>
+      <p>Hello {{firstName}},</p>
       <p>Thank you for registering with our Private Tutoring Platform. Your account has been successfully created.</p>
       <p>We're excited to have you on board! You can now log in and start navigating through our platfrom for the best teachers.</p>
 
@@ -69,7 +69,7 @@ export const registerUserMailTemplate = `
       <p>If you did not sign up for this account, please ignore this email or contact our support.</p>
 
       <div class="footer">
-        &copy; {{year}} JOMAT. All rights reserved.
+        &copy; 2025 JOMAT. All rights reserved.
       </div>
     </div>
   </body>
@@ -125,7 +125,7 @@ export const applicationMailTemplate = `
   <body>
     <div class="container">
       <h2>Welcome to JOMAT!</h2>
-      <p>Hello {{username}},</p>
+      <p>Hello {{firstName}},</p>
       <p>Thank you for applying to work as a tutor on our Private Tutoring Platform. Your application has been recieved.</p>
       <p>We're excited to have you on board! You can now proceed to the screening and interview stage.</p>
 
@@ -190,7 +190,7 @@ export const bookingMailTemplate = `
   <body>
     <div class="container">
       <h2>Welcome to JOMAT!</h2>
-      <p>Hello {{username}},</p>
+      <p>Hello {{firstName}},</p>
       <p>Thank you for booking for the services of a tutor on our Private Tutoring Platform. Your booking has been saved.</p>
       <p>We're excited to have you on board!</p>
 

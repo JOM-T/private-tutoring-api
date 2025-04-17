@@ -6,14 +6,18 @@ import 'dotenv/config'
 
 export const addApplication = async (req, res, next) => {
     try {
-        const { error, value } = applicationFormValidator.validate (req.body);
+        const { error, value } = applicationFormValidator.validate({
+            ...req.body,
+            uploadCv: req.files?.uploadCv?.[0]?.path,
+            otherDocument: req.files?.otherDocument?.[0]?.path
+        });        
         if (error) {
             return res.status(422).json(error);
         }
         const applied = await applicationModel.findOne({
             $or: [
                 { email: value.email },
-                { contact: value.contact }
+                { phoneNumber: value.phoneNumber }
             ]
         });
         if (applied) {
@@ -24,7 +28,7 @@ export const addApplication = async (req, res, next) => {
             from: process.env.USER_EMAIL,
             to: value.email,
             subject: "Your JOMAT application has been recieved!",
-            html: applicationMailTemplate.replace ("{{name}}", value.name)
+            html: applicationMailTemplate.replace ("{{firstName}}", value.firstName)
         });
         res.status(201).json('Application successfully submitted!');
     } catch (error) {
