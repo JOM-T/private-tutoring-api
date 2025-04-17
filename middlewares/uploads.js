@@ -19,4 +19,22 @@ export const profilePictureUpload = multer ({
     })
 });
 
-
+export const applicationUpload = multer({
+    storage: new CloudinaryStorage({
+      cloudinary,
+      params: (req, file) => {
+        let folder = "private-tutoring-api/general";
+  
+        if (file.fieldname === "uploadCv") {
+          folder = "private-tutoring-api/cv";
+        } else if (file.fieldname === "otherDocument") {
+          folder = "private-tutoring-api/other-documents";
+        }
+  
+        return {
+          folder,
+        };
+      },
+    }),
+  });
+  
