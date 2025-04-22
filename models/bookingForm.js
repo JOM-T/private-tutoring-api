@@ -2,15 +2,19 @@ import { Schema, model } from "mongoose";
 import normalize from "normalize-mongoose";
 
 const bookingSchame = new Schema ({
-    name: { type:String, required:true },
+    firstName: { type:String, required:true },
+    lastName: { type:String, required:true },
     email: { type:String, required:true },
-    contact: { type:Number, required:true },
-    region: { type:String, required:true },
+    phoneNumber: { type:Number, required:true },
+    preferredTeacher: { type:String, required:true },
     location: { type:String, required:true },
     subject: { type:String, required:true },
-    bookingType: { type:String, required:true },
+    bookingFor: { type:String, required:true },
     numberOfLearners: { type:Number, required:true },
-    hoursPerWeek: { type:Number, required:true }
+    levelOfLearner: { type:String, required:true },
+    preferredHoursPerWeek: { type:String, required:true },
+    paymentPlan: { type:String, required:true },
+    paymentMethod: { type:String, required:true }
 }, {
     timestamps: true
 });

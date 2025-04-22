@@ -13,3 +13,12 @@ export const loginUserValidator = Joi.object ({
     email: Joi.string().optional(),
     password: Joi.string().required(),
 });
+
+export const forgotPasswordValidator = Joi.object ({
+    email: Joi.string().required(),
+});
+
+export const resetPasswordValidator = Joi.object ({
+    password: Joi.string().required(),
+    confirmPassword: Joi.ref('password'),
+}).with ('password', 'confirmPassword');

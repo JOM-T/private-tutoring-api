@@ -1,13 +1,17 @@
 import Joi from "joi";
 
 export const addBookingValidator = Joi.object ({
-    name: Joi.string().required(),
+    firstName: Joi.string().required(),
+    lastName: Joi.string().required(),
     email: Joi.string().required(),
-    contact: Joi.number().required(),
-    region: Joi.string().required(),
+    phoneNumber: Joi.number().required(),
+    preferredTeacher: Joi.string().required(),
     location: Joi.string().required(),
     subject: Joi.string().required(),
-    bookingType: Joi.string().required(),
+    bookingFor: Joi.string().required(),
     numberOfLearners: Joi.number().required(),
-    hoursPerWeek: Joi.number().required()
+    levelOfLearner: Joi.string().required(),
+    preferredHoursPerWeek: Joi.string().required(),
+    paymentPlan: Joi.string().required(),
+    paymentMethod: Joi.string().required()
 });

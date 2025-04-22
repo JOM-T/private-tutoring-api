@@ -9,8 +9,10 @@ export const addApplication = async (req, res, next) => {
         const { error, value } = applicationFormValidator.validate({
             ...req.body,
             uploadCv: req.files?.uploadCv?.[0]?.path,
-            otherDocument: req.files?.otherDocument?.[0]?.path
-        });        
+            anyOtherDocumentToUpload: req.files?.anyOtherDocumentToUpload?.[0]?.path
+        }, 
+        { abortEarly: false }
+    );        
         if (error) {
             return res.status(422).json(error);
         }

@@ -27,7 +27,7 @@ export const applicationUpload = multer({
   
         if (file.fieldname === "uploadCv") {
           folder = "private-tutoring-api/cv";
-        } else if (file.fieldname === "otherDocument") {
+        } else if (file.fieldname === "anyOtherDocumentToUpload") {
           folder = "private-tutoring-api/other-documents";
         }
   
