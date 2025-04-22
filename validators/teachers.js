@@ -1,10 +1,11 @@
 import Joi from "joi";
 
 export const addTeacherValidator = Joi.object ({
-    firstName: Joi.string().required(),
-    lastName: Joi.string().required(),
+    fullName: Joi.string().required(),
+    subject: Joi.string().required(),
     location: Joi.string().required(),
-    role: Joi.string().required(),
-    yearsOfExperience: Joi.number().required(),
+    profile: Joi.string().required(),
+    keySkills: Joi.string().required(),
+    teachingPhilosophy: Joi.string().required(),
     image: Joi.string().required(),
 });

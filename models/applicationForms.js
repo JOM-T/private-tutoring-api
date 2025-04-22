@@ -8,12 +8,12 @@ const applicationSchema = new Schema ({
     phoneNumber: { type:Number, required:true },
     location: { type:String, required:true },
     specialization: { type:String, required:true },
-    earliestPossibleStartDate: { type:String, required:true },
-    preferredInterviewDate: { type:String, required:true },
+    earliestPossibleStartDate: { type:Date, required:true },
+    preferredInterviewDate: { type:Date, required:true },
     preferredInterviewTime: { type:String, required:true },
     coverLetter: { type:String, required:true },
     uploadCv: { type:String, required:true },
-    otherDocument: { type:String, required:false }
+    anyOtherDocumentToUpload: { type:String, required:false }
 }, {
     timestamps: true
 });

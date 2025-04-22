@@ -15,7 +15,7 @@ export const bookTutor = async (req, res, next) => {
             from: process.env.USER_EMAIL,
             to: value.email,
             subject: "Notification of successful booking!",
-            html: bookingMailTemplate.replace("{{name}}", value.name)
+            html: bookingMailTemplate.replace("{{firstName}}", value.firstName)
         });
         res.status(201).json('Booking successful!');
     } catch (error) {

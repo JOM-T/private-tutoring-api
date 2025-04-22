@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { loginUser, registerUser } from "../controllers/regUser.js";
-import { isAuthenticated } from "../middlewares/auth.js";
+import { forgotPassword, loginUser, registerUser, resetPassword } from "../controllers/regUser.js";
 
 const userRouter = Router();
 
 userRouter.post("/user/register",  registerUser);
 userRouter.post("/user/login", loginUser);
+userRouter.post("/user/forgot-password", forgotPassword);
+userRouter.post("/user/reset-password/:token", resetPassword);
 
 export default userRouter;
