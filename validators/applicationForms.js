@@ -8,8 +8,6 @@ export const applicationFormValidator = Joi.object ({
     location: Joi.string().required(),
     specialization: Joi.string().required(),
     earliestPossibleStartDate: Joi.date().required(),
-    preferredInterviewDate: Joi.date().required(),
-    preferredInterviewTime: Joi.string().required(),
     coverLetter: Joi.string().required(),
     uploadCv: Joi.string().required(),
     anyOtherDocumentToUpload: Joi.string().optional()
