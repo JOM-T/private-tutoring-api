@@ -18,5 +18,10 @@ app.use(userRouter);
 app.use(applicationRouter);
 app.use(bookingRouter);
 
+app.get('/', (req, res) => {
+    res.send('Welcome to the API');
+  });
+  
+
 const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
