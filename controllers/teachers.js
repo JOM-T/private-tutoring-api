@@ -1,5 +1,5 @@
 import { teacherModel } from "../models/teachers.js";
-import { addTeacherValidator } from "../validators/teachers.js"
+import { addTeacherDashboardValidator, addTeacherValidator } from "../validators/teachers.js"
 
 
 export const addTeacher = async (req, res, next) => {
@@ -62,6 +62,22 @@ export const deleteTeacher = async (req, res, next) => {
             return res.status(404).json('Teacher not found');
         }
         res.status(200).json('Deleted successfully!');
+    } catch (error) {
+        next(error);
+    }
+}
+
+export const addTeacherDashboard = async (req, res, next) => {
+    try {
+        const { error, value } = addTeacherDashboardValidator.validate({
+            ...req.body,
+            image: req.file?.filename
+        })
+        if (error) {
+            return res.status(422).json(error)
+        }
+        const result = await teacherModel.create(value);
+        res.status(201).json(result);
     } catch (error) {
         next(error);
     }
