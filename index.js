@@ -13,7 +13,12 @@ await mongoose.connect(process.env.MONGO_URI);
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173'], // Explicitly allow your frontend origin
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], // All needed methods
+  allowedHeaders: ['Content-Type', 'Authorization'], // Required headers
+  credentials: true // If you're using cookies/tokens
+}));
 
 app.use(express.json());
 app.use(teacherRouter);
