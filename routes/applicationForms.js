@@ -9,7 +9,8 @@ const applicationRouter = Router();
 applicationRouter.post("/application/form", 
     applicationUpload.fields([
         { name: "uploadCv", maxCount: 1 },
-        { name: "anyOtherDocumentToUpload", maxCount: 1 }
+        { name: "anyOtherDocumentToUpload", maxCount: 1 },
+        { name: "uploadProfilePicture", maxCount: 1 }
     ]), 
     addApplication
 );

@@ -9,7 +9,8 @@ export const addApplication = async (req, res, next) => {
         const { error, value } = applicationFormValidator.validate({
             ...req.body,
             uploadCv: req.files?.uploadCv?.[0]?.path,
-            anyOtherDocumentToUpload: req.files?.anyOtherDocumentToUpload?.[0]?.path
+            anyOtherDocumentToUpload: req.files?.anyOtherDocumentToUpload?.[0]?.path,
+            uploadProfilePicture: req.files?.uploadProfilePicture?.[0]?.path,
         }, 
         { abortEarly: false }
     );        
@@ -32,7 +33,7 @@ export const addApplication = async (req, res, next) => {
             subject: "Your JOMAT application has been recieved!",
             html: applicationMailTemplate.replace ("{{firstName}}", value.firstName)
         });
-        res.status(201).json('Application successfully submitted!');
+        res.status(201).json(result);
     } catch (error) {
         next(error);
     }
