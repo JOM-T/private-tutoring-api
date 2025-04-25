@@ -5,7 +5,7 @@ const userSchema = new Schema ({
     firstName: { type:String, required:true },
     lastName: { type:String, required:true },
     email: { type:String, required:true, unique:true },
-    option: { type:String, required:true },
+    role : {type: String, default: "parent/student", enum: ["parent/student", "teacher"]},
     password: { type:String, required:true },
     passwordResetToken: String,
     passwordResetExpires: Date,
