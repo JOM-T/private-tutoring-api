@@ -10,5 +10,6 @@ export const applicationFormValidator = Joi.object ({
     earliestPossibleStartDate: Joi.date().required(),
     coverLetter: Joi.string().required(),
     uploadCv: Joi.string().required(),
-    anyOtherDocumentToUpload: Joi.string().optional()
+    anyOtherDocumentToUpload: Joi.string().optional(),
+    uploadProfilePicture: Joi.string().required()
 });

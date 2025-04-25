@@ -11,7 +11,8 @@ const applicationSchema = new Schema ({
     earliestPossibleStartDate: { type:Date, required:true },
     coverLetter: { type:String, required:true },
     uploadCv: { type:String, required:true },
-    anyOtherDocumentToUpload: { type:String, required:false }
+    anyOtherDocumentToUpload: { type:String, required:false },
+    uploadProfilePicture: { type:String, required:true }
 }, {
     timestamps: true
 });
