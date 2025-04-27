@@ -15,8 +15,8 @@ const app = express();
 
 app.use(cors({
   origin: [
-    'http://localhost:5173', // Local development
-    'https://jomat-agency-project.vercel.app'  // Production frontend
+    /http:\/\/localhost:\d+/, // Allows any port (e.g., 5173, 5174, 3000, etc.)
+    'https://jomat-agency-project.vercel.app'
   ],
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
